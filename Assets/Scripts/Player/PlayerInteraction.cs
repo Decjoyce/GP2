@@ -20,16 +20,6 @@ public class PlayerInteraction : MonoBehaviour
         inventory = GetComponentInParent<PlayerInventory>();
     }
 
-/*    private void OnEnable()
-    {
-        contextTextPrefix.StringChanged += UpdateInteractionText;
-    }
-
-    private void OnDisable()
-    {
-        contextTextPrefix.StringChanged -= UpdateInteractionText;
-    }*/
-
     private void Update()
     {
         if (availableInteractions.Count <= 0)
@@ -130,12 +120,6 @@ public class PlayerInteraction : MonoBehaviour
             contextTextPersonal.gameObject.SetActive(false);
             contextTextShared.gameObject.SetActive(false);
         }
-    }
-
-    void UpdateInteractionText(string newText)
-    {
-        contextTextPersonal.text = ParseContextText(newText);
-        contextTextShared.text = ParseContextText(newText);
     }
 
     string ParseContextText(string _stringToParse)
