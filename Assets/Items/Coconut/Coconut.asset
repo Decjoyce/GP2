@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caaf0d5aaa93b0748bebbef69a335db0, type: 3}
+  m_Name: Coconut
+  m_EditorClassIdentifier: 
+  displayName: Coconut
+  mesh: {fileID: 4912871643510635964, guid: 27cf96fdaf63cc944a7c6bb3cd95f655, type: 3}
+  droppedItem: {fileID: 2277370474023528627, guid: 6db867e05fefbb547a65f9d5e219e138,
+    type: 3}
+  addAmount: 20

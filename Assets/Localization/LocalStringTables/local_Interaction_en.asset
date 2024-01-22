@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: local_Interaction_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: bd8d8154302b1d9409144fee349bbbeb, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 2958222113694023715
+  m_TableData:
+  - m_Id: 58378760192
+    m_Localized: Press {0} to {1}
+    m_Metadata:
+      m_Items:
+      - rid: 2958222113694023715
+  - m_Id: 2422137499648
+    m_Localized: ITEM REQUIRED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20432667619328
+    m_Localized: Pick up Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41996763082752
+    m_Localized: Add to Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42131316355072
+    m_Localized: BUCKET FULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42610544947200
+    m_Localized: Pick up Rock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43575725600768
+    m_Localized: Pick up Coconut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46145961537536
+    m_Localized: Add to Campfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53133068021760
+    m_Localized: Pick up Stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2914655481966592
+    m_Localized: Sleep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6291172589121536
+    m_Localized: Mmmmm... Donut
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 2958222113694023715
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0030a5970d000000

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2cdebac6810db4890e942ceda48dfd, type: 3}
+  m_Name: item_stick
+  m_EditorClassIdentifier: 
+  displayName: Stick
+  mesh: {fileID: 1199576346742042054, guid: 58409a4b39fcc7343b6dac88ec51698b, type: 3}
+  droppedItem: {fileID: 3713676064287785359, guid: dfe2f48a4177bfc469a34ccf663d5dbc,
+    type: 3}
+  throwForce: 5
+  throwForceUpwards: 5
+  throwForceMultiplier: 2
+  throwTorque: 1
+  throwTorqueMultiplier: 45
