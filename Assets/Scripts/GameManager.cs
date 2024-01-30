@@ -29,18 +29,23 @@ public class GameManager : MonoBehaviour
 
     byte playersDead;
 
-    [Range(0, 2)]int playersSleeping;
+    bool player1Sleeping, player2Sleeping;
     bool sleeping;
 
-    public void PlayersSleeping(bool increase)
-    {
-        if (increase)
-            playersSleeping++;
-        else
-            playersSleeping--;
+    [SerializeField] CampFire campFire;
 
-        if (playersSleeping == 2)
+    public void PlayersSleeping(bool player2, bool sleep)
+    {
+        if (player2)
+            player2Sleeping = sleep;
+        else
+            player2Sleeping = sleep;
+
+        Debug.Log("Player is Sleeping");
+
+        if (player1Sleeping && player2Sleeping)
         {
+            Debug.Log("Both players are sleeping");
             Time.timeScale = 10f;
             sleeping = true;
         }
@@ -51,7 +56,8 @@ public class GameManager : MonoBehaviour
         if(sleeping && Input.GetKeyDown(KeyCode.Space))
         {
             sleeping = false;
-            playersSleeping = 0;
+            player1Sleeping = false;
+            player2Sleeping = false;
             Time.timeScale = 1f;
         }
     }

@@ -24,7 +24,11 @@ public class PlayerInventory : MonoBehaviour
             
         currentItem = item;
         if(overridenGraphics == null)
-            heldObject = Instantiate(item.mesh, throwPos);
+        {
+            if(item.mesh != null)
+                heldObject = Instantiate(item.mesh, throwPos);
+        }
+
         else
             heldObject = Instantiate(overridenGraphics, throwPos);
     }

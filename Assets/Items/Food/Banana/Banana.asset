@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caaf0d5aaa93b0748bebbef69a335db0, type: 3}
+  m_Name: Banana
+  m_EditorClassIdentifier: 
+  displayName: Banana
+  mesh: {fileID: 5838399039966239300, guid: 3eeebb77c7cbf4f49a4d55b880d7343d, type: 3}
+  droppedItem: {fileID: 4145464855834318263, guid: bfc91b203b63a804f97bf64e67617e78,
+    type: 3}
+  addAmount: 15

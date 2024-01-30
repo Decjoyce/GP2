@@ -22,6 +22,7 @@ public abstract class Item : ScriptableObject
     public virtual void Drop(Transform dropLocation)
     {
         //Vector3 newPos = new Vector3(dropLocation.position.x, dropLocation.position.y + 1, dropLocation.)
-        GameObject dp = Instantiate(droppedItem, dropLocation.position, dropLocation.rotation);
+        if(droppedItem != null)
+        Instantiate(droppedItem, dropLocation.position, dropLocation.rotation);
     }
 }

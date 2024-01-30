@@ -6,19 +6,15 @@ public class SleepingBed : Interactable
 {
     bool canSleep = true;
     bool occupied;
-    [SerializeField] CampFire campfire;
+    [SerializeField] Item sleepItem;
     public override void Interaction(PlayerInteraction player)
     {
         base.Interaction(player);
-        if (occupied)
+        if(!occupied && canSleep)
         {
-            GameManager.instance.PlayersSleeping(false);
-            occupied = false;
+            GameManager.instance.PlayersSleeping(player.GetComponentInParent<PlayerController>().player2, true);
+            player.inventory.AddItem(sleepItem);
         }
-        else if(!occupied && canSleep)
-        {
-            GameManager.instance.PlayersSleeping(true);
-            occupied = true;
-        }
+
     }
 }

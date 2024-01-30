@@ -61,6 +61,10 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 16003651384717312
+    m_Key: interaction_banana
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
