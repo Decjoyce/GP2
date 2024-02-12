@@ -20,5 +20,16 @@ public static class ExtensionMethods {
         chars[index] = newChar;
         return new string(chars);
     }
+
+    public static int AmountOf(this string input, char character)
+    {
+        int i = 0;
+        foreach(char c in input)
+        {
+            if (c == character)
+                i++;
+        }
+        return i;
+    }
 }
   

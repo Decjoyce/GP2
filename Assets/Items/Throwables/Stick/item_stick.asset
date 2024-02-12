@@ -16,8 +16,10 @@ MonoBehaviour:
   mesh: {fileID: 1199576346742042054, guid: 58409a4b39fcc7343b6dac88ec51698b, type: 3}
   droppedItem: {fileID: 3713676064287785359, guid: dfe2f48a4177bfc469a34ccf663d5dbc,
     type: 3}
+  animIndex: 2
+  throwDelay: 0.1
   throwForce: 5
   throwForceUpwards: 5
   throwForceMultiplier: 2
-  throwTorque: 1
-  throwTorqueMultiplier: 45
+  throwTorque: 0.5
+  throwTorqueMultiplier: 2

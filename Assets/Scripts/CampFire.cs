@@ -13,6 +13,8 @@ public class CampFire : Interactable
     [SerializeField] float maxHealth;
     public float currentHealth;
 
+    bool isLit;
+
     // Update is called once per frame
     void Update()
     {
@@ -22,10 +24,19 @@ public class CampFire : Interactable
             fireLight.gameObject.SetActive(false);
 
         fireLight.intensity = ExtensionMethods.Map(currentHealth, 0, maxHealth, 0, 25f);
+
         if (currentHealth > 0)
+        {
             currentHealth -= Time.deltaTime * 2;
-        else
+            isLit = true;
+        }
+        else if (isLit)
+        {
             currentHealth = 0;
+            isLit = false;
+            GameManager.instance.sleepManager.WakeUpPlayers();
+        }
+
     }
 
     public override void Interaction(PlayerInteraction player)

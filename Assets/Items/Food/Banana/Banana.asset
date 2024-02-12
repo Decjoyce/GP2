@@ -16,4 +16,7 @@ MonoBehaviour:
   mesh: {fileID: 5838399039966239300, guid: 3eeebb77c7cbf4f49a4d55b880d7343d, type: 3}
   droppedItem: {fileID: 4145464855834318263, guid: bfc91b203b63a804f97bf64e67617e78,
     type: 3}
+  animIndex: 2
+  canUse: 0
   addAmount: 15
+  eatDelay: 1.84

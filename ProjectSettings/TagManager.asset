@@ -8,6 +8,10 @@ TagManager:
   - Player2
   - Interactable
   - Obstacle
+  - Trigg/Left
+  - Trigg/Up
+  - Trigg/Down
+  - Trigg/Right
   layers:
   - Default
   - TransparentFX

@@ -23,44 +23,13 @@ public class GameManager : MonoBehaviour
 
     public bool gameIsOver;
 
-    [SerializeField] GameObject player1, player2;
+    public GameObject player1, player2;
     public RoomHandler rm;
     public readonly GameObject player1Ref, player2Ref;
 
     byte playersDead;
 
-    bool player1Sleeping, player2Sleeping;
-    bool sleeping;
-
-    [SerializeField] CampFire campFire;
-
-    public void PlayersSleeping(bool player2, bool sleep)
-    {
-        if (player2)
-            player2Sleeping = sleep;
-        else
-            player2Sleeping = sleep;
-
-        Debug.Log("Player is Sleeping");
-
-        if (player1Sleeping && player2Sleeping)
-        {
-            Debug.Log("Both players are sleeping");
-            Time.timeScale = 10f;
-            sleeping = true;
-        }
-    }
-
-    private void Update()
-    {
-        if(sleeping && Input.GetKeyDown(KeyCode.Space))
-        {
-            sleeping = false;
-            player1Sleeping = false;
-            player2Sleeping = false;
-            Time.timeScale = 1f;
-        }
-    }
+    public SleepManager sleepManager;
 
     public void PlayerHasDied(bool isPlayer2)
     {

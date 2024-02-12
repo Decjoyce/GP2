@@ -6,12 +6,13 @@ using UnityEngine.Localization;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public PlayerController2 controller;
     public PlayerInventory inventory;
     public PlayerInteraction otherInteraction;
     bool canInteract;
 
     List<Interactable> availableInteractions = new List<Interactable>();
-    Interactable clostestInteractable;
+    public Interactable closestInteractable;
 
     [SerializeField] TextMeshProUGUI contextTextPersonal, contextTextShared;
 
@@ -58,7 +59,9 @@ public class PlayerInteraction : MonoBehaviour
         Interactable temp_ClostestInteractable = null;
         foreach (Interactable interaction in availableInteractions)
         {
-            float dist = Vector3.Distance(transform.position, interaction.transform.position);
+            //float dist = Vector3.Distance(transform.position, interaction.transform.position);
+            float dist = Vector3.SqrMagnitude(transform.position - interaction.transform.position);
+
             //Debug.Log(interaction.name + " - " + dist);
             if (dist < closestInt)
             {
@@ -72,26 +75,13 @@ public class PlayerInteraction : MonoBehaviour
     public void CheckInteraction()
     {
         if (canInteract)
-        {
-            Interactable closestInteractable = FindClosestInteractable();
-            if (FindClosestInteractable().needItems)
+        {            
+            closestInteractable = FindClosestInteractable();
+            if (closestInteractable != null)
             {
-                FindClosestInteractable().Interaction(this);   
-            }          
-            else
-            {
-                if (inventory.currentItem != null)
-                {
-                    inventory.DropItem();
-                }
-                FindClosestInteractable().Interaction(this);
-
+                controller.EnterState("INTERACT");
+                canInteract = false;
             }
-            //For other player
-            if (otherInteraction.availableInteractions.Contains(closestInteractable))
-                otherInteraction.availableInteractions.Remove(closestInteractable);
-            otherInteraction.SetInteractionText();
-
         }
         else
         {
@@ -100,6 +90,29 @@ public class PlayerInteraction : MonoBehaviour
                 inventory.DropItem();
             }
         }
+        SetInteractionText();
+    }
+
+    public void InteractWith()
+    {
+        if (closestInteractable.needItems)
+        {
+            closestInteractable.Interaction(this);
+        }
+        else
+        {
+            if (inventory.currentItem != null)
+            {
+                inventory.DropItem();
+            }
+            closestInteractable.Interaction(this);
+
+        }
+        //For other player
+        if (otherInteraction.availableInteractions.Contains(closestInteractable))
+            otherInteraction.availableInteractions.Remove(closestInteractable);
+        otherInteraction.SetInteractionText();
+
         SetInteractionText();
     }
 
@@ -151,3 +164,35 @@ public class PlayerInteraction : MonoBehaviour
 
     }
 }
+
+//shh
+/*        if (canInteract)
+        {
+            Interactable closestInteractable = FindClosestInteractable();
+            if (FindClosestInteractable().needItems)
+            {
+                FindClosestInteractable().Interaction(this);   
+            }          
+            else
+            {
+                if (inventory.currentItem != null)
+                {
+                    inventory.DropItem();
+                }
+                FindClosestInteractable().Interaction(this);
+
+            }
+            //For other player
+            if (otherInteraction.availableInteractions.Contains(closestInteractable))
+                otherInteraction.availableInteractions.Remove(closestInteractable);
+            otherInteraction.SetInteractionText();
+
+        }
+        else
+        {
+            if (inventory.currentItem != null)
+            {
+                inventory.DropItem();
+            }
+        }
+        SetInteractionText();*/

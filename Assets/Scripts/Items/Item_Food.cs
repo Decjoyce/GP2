@@ -6,9 +6,15 @@ using UnityEngine;
 public class Item_Food : Item
 {
     public int addAmount;
+    public float eatDelay;
+
     public override void Use(PlayerInventory inv)
     {
-        inv.stats.AddHunger(addAmount);
-        base.Use(inv);
+        inv.Eat(eatDelay, addAmount);
+    }
+
+    public override void AltUse(PlayerInventory inv)
+    {
+        inv.Eat(eatDelay, addAmount);
     }
 }

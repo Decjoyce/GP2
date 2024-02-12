@@ -242,8 +242,13 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   needItems: 0
+  nextState: NEUTRAL
+  animationClip: {fileID: -203655887218126122, guid: e164b0957d342f744bb35a252643a0ea,
+    type: 3}
+  animParam: isPickingUp
   item: {fileID: 11400000, guid: adb21a1e6d8df4d4daddc929025f18d2, type: 2}
   unlimited: 0
+  amount: 1
   displayName: 
   references:
     version: 2

@@ -5,16 +5,18 @@ using UnityEngine;
 public class SleepingBed : Interactable
 {
     bool canSleep = true;
-    bool occupied;
+    public bool occupied;
     [SerializeField] Item sleepItem;
+    [SerializeField] CampFire campFire;
+    [SerializeField] bool debug;
     public override void Interaction(PlayerInteraction player)
     {
         base.Interaction(player);
-        if(!occupied && canSleep)
+        if(!occupied)
         {
-            GameManager.instance.PlayersSleeping(player.GetComponentInParent<PlayerController>().player2, true);
-            player.inventory.AddItem(sleepItem);
+            occupied = true;
+            player.controller.EnterState("SLEEP");
+            GameManager.instance.sleepManager.AssignBed(player.controller.player2, this);
         }
-
     }
 }

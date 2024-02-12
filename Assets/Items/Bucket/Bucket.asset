@@ -16,3 +16,6 @@ MonoBehaviour:
   mesh: {fileID: 1524316375773406588, guid: 61e5a7bfe33b35e42ae9d933102e1640, type: 3}
   droppedItem: {fileID: 9171028779050815260, guid: b7ae27a3006f97c42bce8e412b70c5f4,
     type: 3}
+  holdType: 1
+  animIndex: 1
+  ogBucket: {fileID: 0}

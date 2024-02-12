@@ -26,8 +26,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7173136266263361218}
   - {fileID: 6809518313360267583}
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 3830006299888630576}
   serializedVersion: 2
   m_LocalRotation: {x: -0.18729559, y: -0, z: -0, w: 0.9823036}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,8 +93,8 @@ Transform:
   m_GameObject: {fileID: 5571012194782462381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.3, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.35, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3171797063296931796}
@@ -106,7 +106,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5571012194782462381}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: 2ec7fdcdf313792408ac9d5093ff725c, type: 3}
 --- !u!23 &7315208032995571319
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -175,8 +175,8 @@ Transform:
   m_GameObject: {fileID: 6672015802606506002}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.3, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9205174906583550612}
@@ -202,7 +202,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: f28001cd6f4e46045af4d54751e5902a, type: 3}
 --- !u!1 &6903060060927049599
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 6903060060927049599}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13863142, y: -0.023696711, z: -0.16681476, w: 0.97590613}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 7271337205358294156}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13863133, y: 0.023696696, z: -0.16681476, w: 0.97590613}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,6 +323,10 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   needItems: 1
+  nextState: NEUTRAL
+  animationClip: {fileID: -203655887218126122, guid: e164b0957d342f744bb35a252643a0ea,
+    type: 3}
+  animParam: isPickingUp
   contexttext_pickup:
     m_TableReference:
       m_TableCollectionName: GUID:bd8d8154302b1d9409144fee349bbbeb

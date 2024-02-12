@@ -6,6 +6,7 @@ public class Interaction_Pickup : Interactable
 {
     public Item item;
     public bool unlimited;
+    public int amount = 1;
     public string displayName;
 
     private void Start()
@@ -17,10 +18,14 @@ public class Interaction_Pickup : Interactable
     {
         base.Interaction(player);
         player.inventory.AddItem(item);
-        player.RemoveInteraction(this);
-        if (!unlimited)
+        if(!unlimited)
         {
-            Destroy(gameObject);
+            amount--;
+            if (amount <= 0)
+            {
+                player.RemoveInteraction(this);
+                Destroy(gameObject);
+            }
         }
     }
 }

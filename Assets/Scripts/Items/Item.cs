@@ -7,16 +7,18 @@ public abstract class Item : ScriptableObject
     public string displayName;
     public GameObject mesh;
     public GameObject droppedItem;
+    public int holdType;
+    public int animIndex;
 
     public virtual void Use(PlayerInventory inv)
     {
-        inv.RemoveItem();
+        //inv.RemoveItem();
     }
     
     public virtual void AltUse(PlayerInventory inv)
     {
         Use(inv);
-        inv.RemoveItem();
+        //inv.RemoveItem();
     }
 
     public virtual void Drop(Transform dropLocation)
