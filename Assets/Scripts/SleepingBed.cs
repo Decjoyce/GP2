@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SleepingBed : Interactable
 {
-    bool canSleep = true;
     public bool occupied;
     [SerializeField] Item sleepItem;
     [SerializeField] CampFire campFire;

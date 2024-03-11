@@ -71,7 +71,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log(name + " has died");
         GameManager.instance.PlayerHasDied(player2);
         GetComponent<PlayerInventory>().DropItem();
-        GetComponent<PlayerController>().enabled = false;
+        GetComponent<PlayerController2>().enabled = false;
         gameObject.SetActive(false);
     }
      

@@ -62,7 +62,7 @@ public class DayNightCycle : MonoBehaviour
             {
                 if (periodOfDay != PeriodOfDay.night)
                 {
-                    theSun.intensity = 0;
+                    //theSun.intensity = 0;
                     OnNightTime.Invoke();
                 }
                 periodOfDay = PeriodOfDay.night;

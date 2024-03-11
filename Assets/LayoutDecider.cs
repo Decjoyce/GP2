@@ -10,6 +10,8 @@ public class LayoutDecider : MonoBehaviour
 
     Vector2 player1Spawn, player2Spawn;
 
+    [SerializeField] GameObject testpreb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -205,6 +207,7 @@ public class LayoutDecider : MonoBehaviour
 
         //MoreLogic
         grid[new Vector2(x, y)] = rooms.FindIndex(a => a == newRoom);
+        Instantiate(testpreb, new Vector3(x, 0, y), Quaternion.identity);
         Debug.Log(newRoom + " " + x + " " + y + " " + grid[new Vector2(x, y)]);
     }
 

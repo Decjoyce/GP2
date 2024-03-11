@@ -119,7 +119,7 @@ public class PlayerInventory : MonoBehaviour
         isUsing = true;
         controller.anim.SetBool("isEating", true);
         yield return new WaitForSeconds(delay);
-        stats.AddCourage(amount);
+        stats.AddHunger(amount);
         controller.anim.SetBool("isEating", false);
         RemoveItem();
         isUsing = false;

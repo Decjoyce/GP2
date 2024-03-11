@@ -31,6 +31,18 @@ public class GameManager : MonoBehaviour
 
     public SleepManager sleepManager;
 
+    public bool allowSounds;
+
+    private void Start()
+    {
+        Invoke(nameof(AllowSounds), 3f);
+    }
+
+    void AllowSounds()
+    {
+        allowSounds = true;
+    }
+
     public void PlayerHasDied(bool isPlayer2)
     {
         if (isPlayer2 && playersDead < 1)
