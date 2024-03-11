@@ -63,6 +63,7 @@ public class VisionTrig : MonoBehaviour
         if (visibleTargets.Count == 0 && hasPlayerInSight)
         {
             hasPlayerInSight = false;
+            controller.SwitchState("PATROL");
         }
 
 

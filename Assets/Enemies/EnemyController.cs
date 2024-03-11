@@ -36,13 +36,13 @@ public class EnemyController : MonoBehaviour
     public Transform currentPlayerTarget;
     public Transform[] waypoints;
 
-    [SerializeField] float hearRadius;
+    //[SerializeField] float hearRadius;
     [SerializeField] float hearThreshold;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = state_idle;
+        currentState = state_patrol;
         currentState.EnterState(this);
     }
 
