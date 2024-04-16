@@ -42,8 +42,32 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         currentState = state_patrol;
         currentState.EnterState(this);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.instance.OnLoadGameData_Gameplay += LoadEnemy;
+        GameManager.instance.OnSaveGameData_Gameplay += SaveEnemy;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnLoadGameData_Gameplay -= LoadEnemy;
+        GameManager.instance.OnSaveGameData_Gameplay -= SaveEnemy;
+    }
+
+    public void LoadEnemy()
+    {
+        if(GameManager.instance.gd_gameplay.beenInit)
+            transform.position = GameManager.instance.gd_gameplay.pos_Monster;
+    }
+
+    public void SaveEnemy()
+    {
+         GameManager.instance.gd_gameplay.pos_Monster = transform.position;
     }
 
     private void Update()

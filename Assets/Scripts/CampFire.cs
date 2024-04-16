@@ -46,6 +46,7 @@ public class CampFire : Interactable
         {
             player.inventory.RemoveItem();
             IncreaseHealth(50);
+            GameManager.instance.gd_statistics.sticksAddedToFire++;
         }
     }
 

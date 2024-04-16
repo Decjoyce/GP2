@@ -657,10 +657,16 @@ MonoBehaviour:
   nextState: 
   animationClip: {fileID: 0}
   animParam: 
+  itemStatus:
+    hasBeenAltered: 0
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+    item: {fileID: 0}
   item: {fileID: 11400000, guid: 6963cfd26f07caa43a6d4b30697d521f, type: 2}
   unlimited: 1
   amount: 5
   displayName: Banana Tree
+  id: 0
   references:
     version: 2
     RefIds: []
@@ -3934,6 +3940,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e6e1ee3c04cec47a4b01fcfc21b980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gd_gameplay:
+    beenInit: 0
+    dead_p1: 0
+    dead_p2: 0
+    hunger_p1: 0
+    hunger_p2: 0
+    pos_p1: {x: 0, y: 0, z: 0}
+    pos_p2: {x: 0, y: 0, z: 0}
+    room_p1: 
+    room_p2: 
+    pos_Monster: {x: 0, y: 0, z: 0}
+  gd_statistics:
+    beenInit: 0
+    totalTimePlayed: 0
+    longestTimeAlive: 0
+    shortestTimeAlive: 0
+    numDeaths_total: 0
+    numDeaths_p1: 0
+    numDeaths_p2: 0
+    itemsUsed: 0
+    itemsDropped: 0
+    itemsThrown: 0
+    foodEaten: 0
+    sticksAddedToFire: 0
+    itemsPlacedInBucket: 0
+  gd_environment:
+    hasBeenInitialised: 0
+    itemStatus: []
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -3982,6 +4016,7 @@ MonoBehaviour:
   rm: {fileID: 337822888}
   sleepManager: {fileID: 337822890}
   allowSounds: 0
+  cleanRun: 0
 --- !u!114 &337822888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4009,11 +4044,11 @@ MonoBehaviour:
   player1Cam: {fileID: 1384634384}
   player2Cam: {fileID: 534689333}
   mainCam: {fileID: 330585545}
+  player1VirtualCam: {fileID: 1420040108}
+  player2VirtualCam: {fileID: 915029269}
+  sharedVirtualCam: {fileID: 2142048591}
   sharedCanvas: {fileID: 1127584203}
   splitCanvas: {fileID: 2105523668}
-  p1Cam: {fileID: 1259445479}
-  p2Cam: {fileID: 1362535773}
-  sharedCam: {fileID: 1293711218}
   tg: {fileID: 812399478}
   roomPlayer1: 
   roomPlayer2: 
@@ -5360,7 +5395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534689329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16793816, y: 0.22275019, z: -0.038986843, w: 0.9595099}
+  m_LocalRotation: {x: 0.16793816, y: 0.22275019, z: -0.038986836, w: 0.95950985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6358,6 +6393,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686785762}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &688910766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 688910768}
+  - component: {fileID: 688910767}
+  m_Layer: 0
+  m_Name: ItemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &688910767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688910766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fa6e429e465ce4eb9b36cb24e60ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 337822887}
+  listOfItems: []
+--- !u!4 &688910768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688910766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &713244521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3705809147371608537, guid: 7ece17a7b7027e3408857245f76dfcd8,
@@ -8023,7 +8104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915029267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16793816, y: 0.22275019, z: -0.038986843, w: 0.9595099}
+  m_LocalRotation: {x: 0.16793816, y: 0.22275019, z: -0.038986836, w: 0.95950985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10824,6 +10905,7 @@ MonoBehaviour:
   throwPos: {fileID: 572019}
   otherDropLocation: {fileID: 1838835884}
   heldObject: {fileID: 0}
+  refNum: 0
   interactionLayer:
     serializedVersion: 2
     m_Bits: 14131
@@ -10864,6 +10946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interaction: {fileID: 1928562834}
   inventory: {fileID: 1259445480}
+  stats: {fileID: 1259445481}
   anim: {fileID: 1788672496}
   blockAnimTest: {fileID: 0}
   player2: 0
@@ -11727,6 +11810,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356967283}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1359025951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359025953}
+  - component: {fileID: 1359025952}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1359025952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359025951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42b2e1e8b2da5249a88c2480cedb5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 1259445482}
+  player2: {fileID: 1362535776}
+  p1_dead: 0
+  p2_dead: 0
+--- !u!4 &1359025953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359025951}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1362535769
 GameObject:
   m_ObjectHideFlags: 0
@@ -11829,6 +11960,7 @@ MonoBehaviour:
   throwPos: {fileID: 841435991}
   otherDropLocation: {fileID: 135012367}
   heldObject: {fileID: 0}
+  refNum: 0
   interactionLayer:
     serializedVersion: 2
     m_Bits: 2116
@@ -11869,6 +12001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interaction: {fileID: 1237178931}
   inventory: {fileID: 1362535774}
+  stats: {fileID: 1362535775}
   anim: {fileID: 1164401755}
   blockAnimTest: {fileID: 0}
   player2: 1
@@ -14436,7 +14569,7 @@ Transform:
   m_GameObject: {fileID: 1762709443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 20.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17194,6 +17327,8 @@ SceneRoots:
   - {fileID: 337822886}
   - {fileID: 74406493}
   - {fileID: 1174119458}
+  - {fileID: 1359025953}
+  - {fileID: 688910768}
   - {fileID: 191243472}
   - {fileID: 410087041}
   - {fileID: 1320834032}

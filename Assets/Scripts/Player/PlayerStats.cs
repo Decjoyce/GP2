@@ -69,10 +69,16 @@ public class PlayerStats : MonoBehaviour
     {
         isDead = true;
         Debug.Log(name + " has died");
-        GameManager.instance.PlayerHasDied(player2);
+        PlayerManager.instance.PlayerHasDied(player2);
         GetComponent<PlayerInventory>().DropItem();
         GetComponent<PlayerController2>().enabled = false;
-        gameObject.SetActive(false);
+        GetComponent<CharacterController>().enabled = false;
+
+        GameManager.instance.gd_statistics.numDeaths_total++;
+        if (player2)
+            GameManager.instance.gd_statistics.numDeaths_p2++;
+        else
+            GameManager.instance.gd_statistics.numDeaths_p1++;
     }
-     
+
 }

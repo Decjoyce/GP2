@@ -26,6 +26,30 @@ MonoBehaviour:
     m_Localized: Play Again
     m_Metadata:
       m_Items: []
+  - m_Id: 43498718894567424
+    m_Localized: ENGLISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500399774478336
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500543622328320
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500609254797312
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500670185451520
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500723704770560
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -12,12 +12,14 @@ public abstract class Item : ScriptableObject
 
     public virtual void Use(PlayerInventory inv)
     {
+        GameManager.instance.gd_statistics.itemsUsed++;
         //inv.RemoveItem();
     }
     
     public virtual void AltUse(PlayerInventory inv)
     {
         Use(inv);
+        GameManager.instance.gd_statistics.itemsUsed++;
         //inv.RemoveItem();
     }
 
@@ -25,6 +27,8 @@ public abstract class Item : ScriptableObject
     {
         //Vector3 newPos = new Vector3(dropLocation.position.x, dropLocation.position.y + 1, dropLocation.)
         if(droppedItem != null)
-        Instantiate(droppedItem, dropLocation.position, dropLocation.rotation);
+            Instantiate(droppedItem, dropLocation.position, dropLocation.rotation);
+
+        GameManager.instance.gd_statistics.itemsDropped++;
     }
 }

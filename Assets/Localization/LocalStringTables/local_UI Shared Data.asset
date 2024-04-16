@@ -23,6 +23,30 @@ MonoBehaviour:
     m_Key: ui_playagain
     m_Metadata:
       m_Items: []
+  - m_Id: 43498718894567424
+    m_Key: ui_languagetext
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500399774478336
+    m_Key: ui_play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500543622328320
+    m_Key: ui_exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500609254797312
+    m_Key: ui_options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500670185451520
+    m_Key: ui_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43500723704770560
+    m_Key: ui_language
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

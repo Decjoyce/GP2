@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour
 
     bool isUsing;
 
+    public int refNum;
+
     [SerializeField] LayerMask interactionLayer;
 
     private void Start()
@@ -101,6 +103,7 @@ public class PlayerInventory : MonoBehaviour
         thrownItem.GetComponent<Rigidbody>().AddForce(thrownItem.transform.forward * throwForce + thrownItem.transform.up * throwForceUpwards, ForceMode.Impulse);
         thrownItem.GetComponent<Rigidbody>().AddTorque(thrownItem.transform.right * throwTorque, ForceMode.Impulse);
         Destroy(heldObject);
+        GameManager.instance.gd_statistics.itemsThrown++;
         yield return new WaitForSeconds(0.3f);
         controller.anim.SetLayerWeight(currentItem.animIndex, 0);
         currentItem = null;
@@ -123,5 +126,6 @@ public class PlayerInventory : MonoBehaviour
         controller.anim.SetBool("isEating", false);
         RemoveItem();
         isUsing = false;
+        GameManager.instance.gd_statistics.foodEaten++;
     }
 }

@@ -24,8 +24,8 @@ public class SoundMaker : MonoBehaviour
         if (GameManager.instance.allowSounds)
         {
             source.PlayOneShot(soundEffects[0]);
-            if(alertEnemy)
-                EnemyController.instance.SoundHeard(transform.position, source.volume);
+            //if(alertEnemy)
+                //EnemyController.instance.SoundHeard(transform.position, source.volume);
         }
     }
 }

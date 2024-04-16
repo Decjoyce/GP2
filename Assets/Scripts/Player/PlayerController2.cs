@@ -8,6 +8,7 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
     PlayerControls playerControls;
     public PlayerInteraction interaction;
     public PlayerInventory inventory;
+    public PlayerStats stats;
     public Animator anim;
     public Animator blockAnimTest;
 
@@ -29,14 +30,15 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
             playerControls.PlayerOne.SetCallbacks(this);
         else
             playerControls.PlayerTwo.SetCallbacks(this);
-
-        interaction = GetComponentInChildren<PlayerInteraction>();
-        inventory = GetComponent<PlayerInventory>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
+        interaction = GetComponentInChildren<PlayerInteraction>();
+        inventory = GetComponent<PlayerInventory>();
+        stats = GetComponent<PlayerStats>();
         controller = GetComponent<CharacterController>();
 
         currentState = stateNeutral;
