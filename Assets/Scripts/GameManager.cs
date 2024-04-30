@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Xml;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using static GameManager;
 
 #region game data
@@ -168,6 +170,7 @@ public class GameManager : MonoBehaviour
             ResetGameData_Gameplay();
             Debug.Log("<b>GAMEPLAY DATA</b> not found");
         }
+        if(!startMenu)
         OnLoadGameData_Gameplay.Invoke();
     }
 
@@ -175,7 +178,8 @@ public class GameManager : MonoBehaviour
     {
         if (canSave_gameplayData)
         {
-            OnSaveGameData_Gameplay.Invoke();
+            if (!startMenu)
+                OnSaveGameData_Gameplay.Invoke();
 
             gd_gameplay.beenInit = true;
 
@@ -246,12 +250,14 @@ public class GameManager : MonoBehaviour
             ResetGameData_Environment();
             Debug.Log("<b>GAMEPLAY ENVIRONMENT</b> not found");
         }
-        OnLoadGameData_Environment.Invoke();
+        if (!startMenu)
+            OnLoadGameData_Environment.Invoke();
     }
 
     public void SaveGameData_Environment()
     {
-        OnSaveGameData_Environment.Invoke();
+        if (!startMenu)
+            OnSaveGameData_Environment.Invoke();
 
         string gameStatusJson = JsonUtility.ToJson(gd_environment);
 
@@ -308,6 +314,8 @@ public class GameManager : MonoBehaviour
 
     bool canSave_gameplayData = true;
 
+    [SerializeField] bool startMenu;
+
     private void Start()
     {
         if(cleanRun)
@@ -315,6 +323,7 @@ public class GameManager : MonoBehaviour
 
         LoadAllData();
         Invoke(nameof(AllowSounds), 3f);
+
     }
 
     void AllowSounds()
@@ -329,10 +338,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //CheckTimeAlive();
+        CheckTimeAlive();
         gameIsOver = true;
         OnGameOver.Invoke();
         canSave_gameplayData = false;
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public GameObject GetOtherPlayer(GameObject player)
@@ -358,20 +372,38 @@ public class GameManager : MonoBehaviour
         {
             LoadAllData();
         }
+        currentPlayTime += Time.deltaTime;
+
     }
 
-    public void CheckTimeAlive(float newTime)
+    public void CheckTimeAlive()
     {
-        if (newTime > gd_statistics.longestTimeAlive)
-            gd_statistics.longestTimeAlive = newTime;
+        if (currentPlayTime > gd_statistics.longestTimeAlive)
+            gd_statistics.longestTimeAlive = currentPlayTime;
 
-        if (newTime < gd_statistics.shortestTimeAlive)
-            gd_statistics.shortestTimeAlive = newTime;
+        if (currentPlayTime < gd_statistics.shortestTimeAlive || currentPlayTime > 0)
+            gd_statistics.shortestTimeAlive = currentPlayTime;
     }
 
     private void OnApplicationQuit()
     {
         SaveAllData();
+    }
+
+    public void LoadStatsIntoText(TextMeshProUGUI text)
+    {
+        string message = "";
+        message += "Total Time Played: " + gd_statistics.totalTimePlayed + "\n";
+        message += "Longest Time Alive: " + gd_statistics.longestTimeAlive + "\n";
+        message += "Shortest Time Alive: " + gd_statistics.shortestTimeAlive + "\n";
+        message += "Total Deaths:" + gd_statistics.numDeaths_total + "\n";
+        message += "Player 1 Deaths:" + gd_statistics.numDeaths_p1 + "\n";
+        message += "Player 2 Deaths:" + gd_statistics.numDeaths_p2 + "\n";
+        message += "Items Used: " + gd_statistics.itemsUsed + "\n";
+        message += "Items Dropped: " + gd_statistics.itemsDropped + "\n";
+        message += "Items Thrown: " + gd_statistics.itemsThrown + "\n";
+        message += "Food Eaten: " + gd_statistics.foodEaten + "\n";
+        text.text = message;
     }
 
 }
