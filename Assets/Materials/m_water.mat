@@ -86,7 +86,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AbsorptionCoefficient: 0.64
+    - _AbsorptionCoefficient: 0.72
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -98,15 +98,15 @@ Material:
     - _Cull: 2
     - _Cutoff: 0
     - _Depth: 1
-    - _DepthFade: 22.35
+    - _DepthFade: 0.64
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
-    - _FoamDepth: 6.29
-    - _FoamRippleSpeed: 0.61
-    - _FoamScale: 23.8
+    - _FoamDepth: 1.84
+    - _FoamRippleSpeed: 0.58
+    - _FoamScale: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -117,19 +117,19 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Reflectiveness: 0.16
+    - _Reflectiveness: 0.37
     - _ShimmerOffset: 0.41
     - _ShimmerSpeed: 2.67
-    - _Shininess: 0.51
+    - _Shininess: 0.9
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _WaveHeight: 1.17
-    - _WaveScale: 0.42
-    - _WaveSpeed: 0.71
+    - _WaveHeight: 4.29
+    - _WaveScale: 0.16
+    - _WaveSpeed: 4
     - _WaveUse: 0
     - _WorkflowMode: 1
     - _ZWrite: 0
@@ -146,6 +146,7 @@ Material:
     - _ShimmerScale: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WaterColour: {r: 0.3339622, g: 0.81326044, b: 1, a: 1}
+    - _WaveDirection: {r: 0.7, g: 0.3, b: 0, a: 0}
     - _WaveUse: {r: 0, g: 0, b: 0, a: 0}
     - _testcolor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
