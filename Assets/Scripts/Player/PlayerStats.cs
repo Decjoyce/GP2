@@ -72,7 +72,7 @@ public class PlayerStats : MonoBehaviour
         PlayerManager.instance.PlayerHasDied(player2);
         GetComponent<PlayerInventory>().DropItem();
         GetComponent<PlayerController2>().enabled = false;
-        GetComponent<CharacterController>().enabled = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
         GameManager.instance.gd_statistics.numDeaths_total++;
         if (player2)

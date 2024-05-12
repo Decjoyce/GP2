@@ -49,7 +49,7 @@ public class DayNightCycle : MonoBehaviour
                 }
                 periodOfDay = PeriodOfDay.day;
             }
-            if (timeOfDay >= 160f && timeOfDay < 180f)
+            if (timeOfDay >= 160f && timeOfDay < 200f)
             {                
                 if(periodOfDay != PeriodOfDay.afternoon)
                 {
@@ -58,7 +58,7 @@ public class DayNightCycle : MonoBehaviour
                 }
                 periodOfDay = PeriodOfDay.afternoon;
             }
-            if (timeOfDay >= 180f && timeOfDay <= 240f || timeOfDay >= 0f && timeOfDay < 60f)
+            if (timeOfDay >= 200f && timeOfDay <= 240f || timeOfDay >= 0f && timeOfDay < 60f)
             {
                 if (periodOfDay != PeriodOfDay.night)
                 {

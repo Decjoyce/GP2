@@ -193,6 +193,15 @@ public class GameManager : MonoBehaviour
         else
         {
             ResetGameData_Statistics();
+            int ranPos_p1 = Random.Range(0, spawnpoints.Length);
+            int ranPos_p2 = Random.Range(0, spawnpoints.Length);
+            while(ranPos_p2 == ranPos_p1)
+            {
+                ranPos_p2 = Random.Range(0, spawnpoints.Length);
+            }
+            Debug.Log(ranPos_p1 + " " + ranPos_p2);
+            player1.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p1].position);
+            player2.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p2].position);
             Debug.Log("GAMEPLAY STATISTICS not found");
         }
         //OnLoadGameData_Statistics.Invoke();
@@ -257,6 +266,8 @@ public class GameManager : MonoBehaviour
     public bool cleanRun;
 
     bool canSave_gameplayData = true;
+
+    [SerializeField] Transform[] spawnpoints;
 
     [SerializeField] bool startMenu;
 

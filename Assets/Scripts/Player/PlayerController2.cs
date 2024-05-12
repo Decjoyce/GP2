@@ -25,6 +25,7 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
     public PlayerState_Neutral stateNeutral = new PlayerState_Neutral();
     public PlayerState_Sleep stateSleep = new PlayerState_Sleep();
     public PlayerState_Interacting stateInteract = new PlayerState_Interacting();
+    public PlayerState_Spawn stateSpawn = new PlayerState_Spawn();
 
     void Awake()
     {
@@ -46,8 +47,9 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
         controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 
-        currentState = stateNeutral;
+        currentState = stateSpawn;
         currentState.EnterState(this);
+        Invoke(nameof(EnableControls), 2f);
     }
 
     void OnEnable()
@@ -58,6 +60,12 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
     void OnDisable()
     {
         playerControls.Disable();
+    }
+
+    void EnableControls()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     // Update is called once per frame
