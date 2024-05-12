@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - {fileID: 8300000, guid: 7c3b55b1f8cf5044fbadd2b66080f181, type: 3}
+  - {fileID: 8300000, guid: 7c3337d2ba792704f8980ddafb923043, type: 3}
   alertEnemy: 1
 --- !u!1 &5324379083532963934
 GameObject:

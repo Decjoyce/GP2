@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +34,8 @@ public class EnemyController : MonoBehaviour
     public Vector3 target;
     public Transform currentPlayerTarget;
     public Transform[] waypoints;
+
+    public Transform otherplace;
 
     //[SerializeField] float hearRadius;
     [SerializeField] float hearThreshold;
@@ -140,7 +141,21 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(currentState.Delay(this));
     }
 
+
+    public void MoveToOtherPlace()
+    {
+        navAgent.enabled = false;
+        //transform.position = otherplace.position;
+    }
+
+    public void ReturnBack()
+    {
+/*        transform.position = waypoints[Random.Range(0, waypoints.Length)].position;
+        SwitchState("PATROL");*/
+        navAgent.isStopped = false;
+    }
 }
+
 
 public enum EnemyStates
 {
