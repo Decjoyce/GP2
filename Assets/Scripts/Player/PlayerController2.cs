@@ -15,7 +15,11 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
     public bool player2;
     //Universal
     public CharacterController controller;
+    public Rigidbody rb;
     [SerializeField] Camera playerCam;
+
+    public float speed = 3;
+    public float turnSpeed = 180;
 
     BaseState_Player currentState;
     public PlayerState_Neutral stateNeutral = new PlayerState_Neutral();
@@ -40,6 +44,7 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
         inventory = GetComponent<PlayerInventory>();
         stats = GetComponent<PlayerStats>();
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
 
         currentState = stateNeutral;
         currentState.EnterState(this);

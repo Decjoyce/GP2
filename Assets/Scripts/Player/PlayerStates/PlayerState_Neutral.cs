@@ -11,8 +11,6 @@ public class PlayerState_Neutral : BaseState_Player
 
     //Stats
     [Header("Values")]
-    [SerializeField] float speed = 3;
-    [SerializeField] float turnSpeed = 180;
     float turnSmoothVelocity;
     Vector2 movementDirection;
     float lookDirection;
@@ -24,15 +22,7 @@ public class PlayerState_Neutral : BaseState_Player
 
     public override void FrameUpdateState(PlayerController2 manager)
     {
-        manager.transform.Rotate(0, lookDirection * turnSpeed * Time.deltaTime, 0);
 
-        if (movementDirection.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.y) * Mathf.Rad2Deg;
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * manager.transform.forward;
-            manager.controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
     }
 
     public override void PhysicsUpdateState(PlayerController2 manager)
@@ -44,6 +34,18 @@ public class PlayerState_Neutral : BaseState_Player
         manager.anim.SetFloat("zinput", lerpedZ);
         manager.anim.SetFloat("turninput", lerpedTurn);
         manager.anim.SetFloat("movementInput", movementDirection.magnitude);
+
+        Quaternion newRot = Quaternion.Euler(0, manager.rb.rotation.eulerAngles.y + (lookDirection * manager.turnSpeed * Time.fixedDeltaTime), 0);
+        manager.rb.rotation = newRot;
+
+        if (movementDirection.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.y) * Mathf.Rad2Deg;
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * manager.transform.forward;
+            manager.rb.MovePosition(manager.transform.position + (moveDir.normalized * manager.speed * Time.fixedDeltaTime));
+            //manager.controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
     }
 
     public override void OnTriggerEnter(PlayerController2 manager, Collider other)

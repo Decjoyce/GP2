@@ -17,58 +17,16 @@ public class ItemManager : MonoBehaviour
     }
     #endregion singleton
 
-    public GameManager gm;
-   //public List<ItemStatus> listOfItemStatus = new List<ItemStatus>();
-   public List<Interaction_Pickup> listOfItems = new List<Interaction_Pickup>();
+    [SerializeField] Transform[] spawnpoints;
 
-    int ids;
+    [SerializeField] GameObject[] itemPrefabs;
 
-    private void OnEnable()
+    private void Start()
     {
-        gm.OnLoadGameData_Environment += LoadItems;
-        gm.OnSaveGameData_Environment += SaveItems;
-    }
-
-    private void OnDisable()
-    {
-        gm.OnLoadGameData_Environment -= LoadItems;
-        gm.OnSaveGameData_Environment -= SaveItems;
-    }
-
-
-
-    public void LoadItems()
-    {
-        for(int i = 0; i < listOfItems.Count; i++)
+        for (int i = 0; i < spawnpoints.Length; i++)
         {
-            listOfItems[i].item = gm.gd_environment.itemStatus[i].item;
-            listOfItems[i].transform.rotation = gm.gd_environment.itemStatus[i].rot;
-            listOfItems[i].transform.rotation = gm.gd_environment.itemStatus[i].rot;
+            int ranInt = Random.Range(0, itemPrefabs.Length);
+            Instantiate(itemPrefabs[ranInt], spawnpoints[i].position, spawnpoints[i].rotation, transform);
         }
-
-    }
-
-    public void SaveItems()
-    {
-        Debug.Log("Shush");
-        foreach(Interaction_Pickup item in listOfItems)
-        {
-            gm.gd_environment.itemStatus.Add(item.itemStatus);
-        }
-
-    }
-
-    public void AddItemToList(Interaction_Pickup item)
-    {
-        if (!listOfItems.Contains(item))
-        {
-            listOfItems.Add(item);
-        }
-    }
-
-    public void RemoveItemFromList(Interaction_Pickup item)
-    {
-        listOfItems.Remove(listOfItems.Find(x => x.id == item.id));
-        //Debug.Log(listOfItems.Find(x => x.id == item.id).id);
     }
 }

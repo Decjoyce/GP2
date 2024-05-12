@@ -92,19 +92,6 @@ public struct GameData_Statistics
         itemsPlacedInBucket = 0;
     }
 }
-
-[System.Serializable]
-public struct GameData_Environment
-{
-    public bool hasBeenInitialised;
-
-    public List<ItemStatus> itemStatus;
-    public void ResetData()
-    {
-
-    }
-}
-
 #endregion
 
 public class GameManager : MonoBehaviour
@@ -124,8 +111,6 @@ public class GameManager : MonoBehaviour
     public delegate void Event_OnSaveGameData_Statistics();
     public event Event_OnSaveGameData_Statistics OnSaveGameData_Statistics;
 
-    public delegate void Event_OnSaveGameData_Environment();
-    public event Event_OnSaveGameData_Environment OnSaveGameData_Environment;
 
     #region singleton
     public static GameManager instance;
@@ -144,17 +129,15 @@ public class GameManager : MonoBehaviour
         filePath = Application.persistentDataPath;
         gd_gameplay = new GameData_Gameplay();
         gd_statistics = new GameData_Statistics();
-        gd_environment = new GameData_Environment();
         Debug.Log(filePath);
     }
     #endregion singleton
 
     public GameData_Gameplay gd_gameplay;
     public GameData_Statistics gd_statistics;
-    public GameData_Environment gd_environment;
 
     string filePath;
-    const string FILE_NAME_GAMEPLAY = "gameplay_save.json", FILE_NAME_STATISTICS = "statistics_save.json", FILE_NAME_ENVIRONMENT = "environment_save.json";
+    const string FILE_NAME_GAMEPLAY = "gameplay_save.json", FILE_NAME_STATISTICS = "statistics_save.json";
 
     #region Game Data Functionality
     public void LoadGameData_Gameplay()
@@ -237,61 +220,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadGameData_Environment()
-    {
-        if (File.Exists(filePath + "/" + FILE_NAME_ENVIRONMENT))
-        {
-            string loadedJson = File.ReadAllText(filePath + "/" + FILE_NAME_ENVIRONMENT);
-            gd_environment = JsonUtility.FromJson<GameData_Environment>(loadedJson);
-            Debug.Log("GAMEPLAY ENVIRONMENT LOADED SUCCESSFULLY");
-        }
-        else
-        {
-            ResetGameData_Environment();
-            Debug.Log("<b>GAMEPLAY ENVIRONMENT</b> not found");
-        }
-        if (!startMenu)
-            OnLoadGameData_Environment.Invoke();
-    }
-
-    public void SaveGameData_Environment()
-    {
-        if (!startMenu)
-            OnSaveGameData_Environment.Invoke();
-
-        string gameStatusJson = JsonUtility.ToJson(gd_environment);
-
-        File.WriteAllText(filePath + "/" + FILE_NAME_ENVIRONMENT, gameStatusJson);
-        Debug.Log("GAMEPLAY ENVIRONMENT created and saved");
-    }
-
-    public void ResetGameData_Environment()
-    {
-        if (File.Exists(filePath + "/" + FILE_NAME_ENVIRONMENT))
-        {
-            File.Delete(filePath + "/" + FILE_NAME_ENVIRONMENT);
-        }
-    }
-
     public void LoadAllData()
     {
         LoadGameData_Gameplay();
         LoadGameData_Statistics();
-        LoadGameData_Environment();
     }
 
     public void SaveAllData()
     {
         SaveGameData_Gameplay();
         SaveGameData_Statistics();
-        SaveGameData_Environment();
     }
 
     public void ResetAllData()
     {
         ResetGameData_Gameplay();
         ResetGameData_Statistics();
-        ResetGameData_Environment();
     }
 
     #endregion
