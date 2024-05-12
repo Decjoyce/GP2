@@ -74,6 +74,9 @@ public class PlayerStats : MonoBehaviour
         GetComponent<PlayerController2>().enabled = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
+        hungerBarShared.gameObject.SetActive(false);
+        hungerBarSplit.gameObject.SetActive(false);
+
         GameManager.instance.gd_statistics.numDeaths_total++;
         if (player2)
             GameManager.instance.gd_statistics.numDeaths_p2++;

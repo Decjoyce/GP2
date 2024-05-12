@@ -316,6 +316,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void LeaveGame()
+    {
+        Application.Quit();
+    }
+
     public GameObject GetOtherPlayer(GameObject player)
     {
         if (player == player1)

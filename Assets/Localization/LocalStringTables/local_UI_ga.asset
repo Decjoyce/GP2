@@ -52,6 +52,22 @@ MonoBehaviour:
     m_Localized: Scoir
     m_Metadata:
       m_Items: []
+  - m_Id: 53810384286855168
+    m_Localized: "Sonra\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53815098890072064
+    m_Localized: "S\xE1bh\xE1il"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53815351211012096
+    m_Localized: "L\xF3d\xE1il"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53815474989117440
+    m_Localized: Stop
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

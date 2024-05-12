@@ -144,15 +144,13 @@ public class EnemyController : MonoBehaviour
 
     public void MoveToOtherPlace()
     {
-        navAgent.enabled = false;
-        //transform.position = otherplace.position;
+        transform.position = otherplace.position;
     }
 
     public void ReturnBack()
     {
-/*        transform.position = waypoints[Random.Range(0, waypoints.Length)].position;
-        SwitchState("PATROL");*/
-        navAgent.isStopped = false;
+        transform.position = waypoints[Random.Range(0, waypoints.Length)].position;
+        navAgent.updatePosition = true;
     }
 }
 
