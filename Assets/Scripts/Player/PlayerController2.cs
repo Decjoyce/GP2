@@ -49,7 +49,7 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
 
         currentState = stateSpawn;
         currentState.EnterState(this);
-        Invoke(nameof(EnableControls), 2f);
+        Invoke(nameof(EnableControls), 4f);
     }
 
     void OnEnable()
@@ -66,6 +66,8 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
     {
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        ExitState();
+        EnterState("NEUTRAL");
     }
 
     // Update is called once per frame
@@ -129,6 +131,7 @@ public class PlayerController2 : MonoBehaviour, PlayerControls.IPlayerOneActions
                 Debug.LogError("Player State: " + n + " does not exist");
                 break;
         }
+        
     }
 
     public void ExitState()

@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using static GameManager;
 
@@ -193,15 +194,19 @@ public class GameManager : MonoBehaviour
         else
         {
             ResetGameData_Statistics();
-            int ranPos_p1 = Random.Range(0, spawnpoints.Length);
-            int ranPos_p2 = Random.Range(0, spawnpoints.Length);
-            while(ranPos_p2 == ranPos_p1)
+            if (!startMenu)
             {
-                ranPos_p2 = Random.Range(0, spawnpoints.Length);
+                int ranPos_p1 = Random.Range(0, spawnpoints.Length);
+                int ranPos_p2 = Random.Range(0, spawnpoints.Length);
+                while(ranPos_p2 == ranPos_p1)
+                {
+                    ranPos_p2 = Random.Range(0, spawnpoints.Length);
+                }
+                Debug.Log(ranPos_p1 + " " + ranPos_p2);
+                player1.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p1].position);
+                player2.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p2].position);
             }
-            Debug.Log(ranPos_p1 + " " + ranPos_p2);
-            player1.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p1].position);
-            player2.GetComponent<Rigidbody>().MovePosition(spawnpoints[ranPos_p2].position);
+
             Debug.Log("GAMEPLAY STATISTICS not found");
         }
         //OnLoadGameData_Statistics.Invoke();
@@ -271,6 +276,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] bool startMenu;
 
+    [SerializeField] GameObject pauseMenu;
+    bool gamePaused;
+
+    [SerializeField] EventSystem eventSystem;
+
+    [SerializeField] GameObject overButton;
     private void Start()
     {
         if(cleanRun)
@@ -278,7 +289,7 @@ public class GameManager : MonoBehaviour
 
         LoadAllData();
         Invoke(nameof(AllowSounds), 3f);
-
+        Time.timeScale = 1f;
     }
 
     void AllowSounds()
@@ -293,6 +304,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        eventSystem.SetSelectedGameObject(overButton);
         CheckTimeAlive();
         gameIsOver = true;
         OnGameOver.Invoke();
@@ -301,7 +313,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public GameObject GetOtherPlayer(GameObject player)
@@ -329,6 +341,28 @@ public class GameManager : MonoBehaviour
         }
         currentPlayTime += Time.deltaTime;
 
+        if (!startMenu && !gameIsOver && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
+    float lastTimeScale;
+
+    void PauseGame()
+    {
+        gamePaused = !gamePaused;
+        if (gamePaused)
+        {
+            lastTimeScale = Time.timeScale;
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = lastTimeScale;
+            pauseMenu.SetActive(false);
+        }
     }
 
     public void CheckTimeAlive()
@@ -338,11 +372,6 @@ public class GameManager : MonoBehaviour
 
         if (currentPlayTime < gd_statistics.shortestTimeAlive || currentPlayTime > 0)
             gd_statistics.shortestTimeAlive = currentPlayTime;
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveAllData();
     }
 
     public void LoadStatsIntoText(TextMeshProUGUI text)

@@ -13,6 +13,7 @@ public class PlayerState_Spawn : BaseState_Player
 
     public override void ExitState(PlayerController2 manager)
     {
+        manager.anim.SetBool("wakeUp", false);
         manager.EnterState("NEUTRAL");
     }
 

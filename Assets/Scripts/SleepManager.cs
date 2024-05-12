@@ -9,16 +9,21 @@ public class SleepManager : MonoBehaviour
     bool sleeping_p1, sleeping_p2;
 
     SleepingBed bed_p1, bed_p2;
+    [SerializeField] PlayerStats p1, p2;
+
+    [SerializeField] GameObject water;
 
     void CheckSleep()
     {
-        if(sleeping_p1 && sleeping_p2)
+        if((sleeping_p1 || p1.isDead) && (sleeping_p2 || p2.isDead))
         {
             Time.timeScale = 10f;
+            water.SetActive(false);
         }
         else
         {
             Time.timeScale = 1f;
+            water.SetActive(true);
         }
     }
 
